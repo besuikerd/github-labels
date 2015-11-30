@@ -15,5 +15,4 @@ libraryDependencies ++= Seq(
   "org.slf4j" % "slf4j-simple" % "1.6.4",
 
   "mysql" % "mysql-connector-java" % "5.1.37"
-
 )
