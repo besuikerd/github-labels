@@ -11,6 +11,9 @@ import scala.io.Source
 import resource._
 import scala.concurrent.ExecutionContext.Implicits.global
 import msr.scraper.ScraperConfig.jsonFormat
+import scala.util.Success
+import scala.util.Failure
+
 
 object GithubApiTest extends App{
 
@@ -29,8 +32,10 @@ object GithubApiTest extends App{
 //    scraper.getAllLabels().foreach(_.foreach(println))
     scraper.getUser("besuikerd").foreach(println)
 
-    scraper.getIssuesForRepo("OpenRA/OpenRA").foreach{ issues =>
-      println("# of issues: " + issues.size)
+    scraper.getIssuesForRepo("OpenRA/OpenRA").onComplete{
+      case Success(issues) =>
+        println("# of issues: " + issues.size)
+      case Failure(err) => println("could not get issuess, cause: " + err)
     }
   }
 }

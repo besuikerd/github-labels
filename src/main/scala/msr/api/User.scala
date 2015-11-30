@@ -21,7 +21,3 @@ case class User(
   `type` : String,
   site_admin:Boolean
 )
-
-object User{
-  implicit val jsonFormat = Json.format[User]
-}

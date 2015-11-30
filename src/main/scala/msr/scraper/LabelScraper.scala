@@ -1,9 +1,7 @@
 package msr.scraper
 
 import msr.api.{User, Issue, Label, ApiHandler}
-import Label.jsonFormat
-import User.jsonFormat
-import Issue.jsonFormat
+import msr.api.ApiReads._
 import play.api.libs.json.{Reads, JsValue}
 
 import scala.concurrent.Future
@@ -19,7 +17,6 @@ class LabelScraper(config:ScraperConfig, apiHandler:ApiHandler) {
   }
 
   def getUser(name:String):Future[User] = apiHandler.request(s"users/$name").map(_.as[User])
-
 
   def getIssuesForLabels(repo:String, labels:String*):Future[Seq[Issue]] = {
     apiHandler.request(s"repos/$repo/issues", "labels" -> labels.mkString(",")).map(_.as[Seq[Issue]])

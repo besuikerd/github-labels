@@ -17,7 +17,3 @@ case class Issue(
 ){
   def isPullRequest:Boolean = pull_request.isDefined
 }
-
-object Issue{
-  implicit val jsonFormat = Json.format[Issue]
-}

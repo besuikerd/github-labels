@@ -8,7 +8,3 @@ case class PullRequest(
   diff_url:String,
   patch_url:String
 )
-
-object PullRequest{
-  implicit val jsonFormat = Json.format[PullRequest]
-}

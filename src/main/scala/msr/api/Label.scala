@@ -7,7 +7,3 @@ case class Label(
   name:String,
   color:String
 )
-
-object Label{
-  implicit val jsonFormat = Json.format[Label]
-}
